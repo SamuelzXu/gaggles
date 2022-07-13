@@ -5,7 +5,7 @@ from types import SimpleNamespace
 cfg = SimpleNamespace(**{})
 
 # data path
-cfg.data_dir = "/home/ziggy/uwmgi-data/"
+cfg.data_dir = "/home/ziggy/working/uwmgi-fold-data/"
 cfg.fold = 0
 
 cfg.test_df = cfg.data_dir + "sample_submission.csv"

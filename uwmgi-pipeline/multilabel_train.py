@@ -29,6 +29,7 @@ from monai.transforms import (
     Transposed,
 )
 import json
+import resource
 from metric import HausdorffScore
 from monai.utils import set_determinism
 from monai.losses import DiceLoss, DiceCELoss
@@ -38,6 +39,8 @@ from monai.metrics import DiceMetric
 
 
 def main(cfg):
+    rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
+    resource.setrlimit(resource.RLIMIT_NOFILE, (4096, rlimit[1]))
 
     # data sequence
     cfg.data_json_dir = cfg.data_dir + f"dataset_3d_fold_{cfg.fold}.json"
